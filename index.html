@@ -296,15 +296,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   100% { transform: scale(1);}
 }
 	  .visitors-counter,
-.visitors-counter * {
-  color: #d81b60 !important;
-  font-weight: bold;
-  font-size: 1.1em;
-  vertical-align: middle;
-}
-.visitors-counter {
-  display: inline-block;
+visitors-counter {
+  display: inline-flex;
+  align-items: center;
   margin-right: 8px;
+  font-weight: bold;
+}
+
+.visitors-label {
+  color: #333; /* لون الجملة "عدد الزوار:" */
+  margin-left: 5px;
+  font-size: 1.1em;
+}
+
+.visitors-number,
+.visitors-number * {
+  color: #d81b60 !important; /* وردي */
+  font-size: 1.1em;
+  font-weight: bold;
+  vertical-align: middle;
 }
 	
   </style>
@@ -351,14 +361,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="https://www.facebook.com/share/16UEZy9EHd/" target="_blank">📘 فيسبوك</a>
 	  <a href="https://maps.app.goo.gl/Du52raCa55HjmACX8" target="_blank" title=" موقعنا الفرع الاول على الخريطة">📍   الموقع الأول </a>
 	  <a href="https://maps.app.goo.gl/Du52raCa55HjmACX8" target="_blank" title="موقعنا الفرع الثاني على الخريطة">📍 الموقع الثاني</a>
-	 <span class="visitors-counter">
-      <div id="sfc65z8fb5crbz2ecjbc8by7cjp5w55kjzh"></div>
-      <script type="text/javascript" src="https://counter1.optistats.ovh/private/counter.js?c=65z8fb5crbz2ecjbc8by7cjp5w55kjzh&down=async" async></script>
-      <noscript>
-        <a href="https://www.freecounterstat.com" title="page counter">
-          <img src="https://counter1.optistats.ovh/private/freecounterstat.php?c=65z8fb5crbz2ecjbc8by7cjp5w55kjzh" border="0" title="page counter" alt="page counter">
-        </a>
-      </noscript>
+	<span class="visitors-counter">
+      <span class="visitors-label">عدد الزوار:</span>
+      <span class="visitors-number">
+        <div id="sfc65z8fb5crbz2ecjbc8by7cjp5w55kjzh"></div>
+        <script type="text/javascript" src="https://counter1.optistats.ovh/private/counter.js?c=65z8fb5crbz2ecjbc8by7cjp5w55kjzh&down=async" async></script>
+        <noscript>
+          <a href="https://www.freecounterstat.com" title="page counter">
+            <img src="https://counter1.optistats.ovh/private/freecounterstat.php?c=65z8fb5crbz2ecjbc8by7cjp5w55kjzh" border="0" title="page counter" alt="page counter">
+          </a>
+        </noscript>
+      </span>
     </span>
 </div>
   </div>
