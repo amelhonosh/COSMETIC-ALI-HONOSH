@@ -338,6 +338,13 @@ margin-top: 10px;
         font-size: 1em;
         margin-bottom: 10px;
       }
+      .cart-icon {
+  font-size: 2em;
+  line-height: 1;
+  margin-left: 6px;
+  vertical-align: middle;
+  display: inline-block;
+}
       #showCartBtn {
         top: 8px;
         right: 8px;
@@ -372,9 +379,9 @@ t-size: 0.95em;
   </div>
 
   <button id="showCartBtn">
-    🛒 السلة
-    <span id="cartCount">0</span>
-  </button>
+  <span class="cart-icon">🛒</span> السلة
+  <span id="cartCount">0</span>
+</button>
 
   <div class="products" id="product-list"></div>
 
@@ -405,7 +412,7 @@ t-size: 0.95em;
     <a href="https://www.instagram.com/ali_honosh" target="_blank">📸 إنستغرام</a>
     <a href="https://www.facebook.com/share/16UEZy9EHd/" target="_blank">📘 فيسبوك</a>
     <span style="margin:0 10px;">|</span>
-    <a href="https://maps.app.goo.gl/Du52raCa55HjmACX8" target="_blank" title=" موقعنا الفرع الاول على الخريطة">📍الموقع الأول</a>
+    <a href="https://maps.app.goo.gl/Du52raCa55HjmACX8" target="_blank" title="موقعنا الفرع الاول على الخريطة">📍الموقع الأول</a>
     <a href="https://maps.app.goo.gl/Du52raCa55HjmACX8" target="_blank" title="موقعنا الفرع الثاني على الخريطة">📍الموقع الثاني</a>
   </div>
 
@@ -477,7 +484,7 @@ onclick="changeQty(${i}, 1)">+</button>
     }
 
     function confirmRemove(index) {
-      if(confirm("هل أنت متأكد من حذف هذا المنتج من السلة؟")) {
+      if(confirm("هل أنت متأكد من حذف هذا المنتج من ؟")) {
         cart.splice(index, 1);
         updateCartCount();
         showCart();
@@ -526,7 +533,7 @@ onclick="changeQty(${i}, 1)">+</button>
       }
     };
 
-    // زر عرض السلة
+    // زر عرض 
     document.getElementById("showCartBtn").onclick = showCart;
 
     // دالة لتحويل روابط Google Drive إلى روابط مباشرة للعرض
