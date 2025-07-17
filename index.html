@@ -382,33 +382,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </span>
 </div>
   </div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // ابحث عن عنصر الرقم (div الخاص بالعداد)
-  var counterDiv = document.getElementById("sfc65z8fb5crbz2ecjbc8by7cjp5w55kjzh");
-  if(counterDiv) {
-    counterDiv.style.cursor = "pointer";
-    counterDiv.onclick = function(e) {
-      // اطلب الكود السري
-      var code = prompt("أدخل الكود الخاص بصاحب المحل لعرض التفاصيل:");
-      if(code === "ARKAN3927") {
-        // هنا التقرير المفصل
-        alert(
-          "عدد الزوار: " + counterDiv.innerText.trim() + "\n" +
-          "العنوان: شارع الملك فهد\n" +
-          "المنطقة: الرياض\n" +
-          "الدولة: السعودية"
-        );
-      } else if(code === null || code === "") {
-        // لم يدخل شيء، لا تفعل شيء
-      } else {
-        alert("غير مصرح لك بعرض التفاصيل.");
-      }
-      e.stopPropagation();
-    }
-  }
-});
-</script>
   <script>
     // --- سلة المشتريات ---
     let cart = [];
