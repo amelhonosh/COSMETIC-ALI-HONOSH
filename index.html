@@ -299,7 +299,7 @@ margin-top: 10px;
     }
     .gift-effect {
       animation: glow 1s infinite alternate, pulse 1s infinite;
-      box-shadow: 0 0 30px 10px #ffeaff, 0 0 60px 20px #3f51b5;
+      box-shadow: 0 0 30px 10px #00c3ff, 0 0 60px 20px #0099ff;
       border-radius: 10px;
       position: relative;
       z-index: 1;
@@ -393,10 +393,12 @@ t-size: 0.95em;
       <div id="cartTotal" style="font-weight:bold;margin:10px 0;"></div>
       <hr>
       <input type="text" id="custName" placeholder="الاسم" />
-      <input type="text" id="custAddress" placeholder="العنوان" />
-      <input type="text" id="custPhone" placeholder="رقم الهاتف" />
-      <button onclick="submitCartOrder()">إرسال الطلب عبر واتساب</button>
-    </div>
+<input type="text" id="custAddress" placeholder="العنوان" />
+<input type="text" id="custPhone" placeholder="رقم الهاتف" />
+<input type="text" id="custLocation" placeholder="رابط اللوكيشن (اختياري)" />
+<div style="color:#c2185b; font-size:0.95em; margin-bottom:8px;">
+  📍 يمكنك إرسال رابط اللوكيشن من خرائط Google أو واتساب هنا، أو إرساله لاحقًا.
+</div>
   </div>
 
   <div class="toast" id="toast">✅ تم إرسال الطلب إلى واتساب</div>
@@ -425,6 +427,7 @@ t-size: 0.95em;
       if(localStorage.getItem("custName")) document.getElementById("custName").value = localStorage.getItem("custName");
       if(localStorage.getItem("custAddress")) document.getElementById("custAddress").value = localStorage.getItem("custAddress");
       if(localStorage.getItem("custPhone")) document.getElementById("custPhone").value = localStorage.getItem("custPhone");
+      if(localStorage.getItem("custLocation")) document.getElementById("custLocation").value = localStorage.getItem("custLocation");
     };
 
     function addToCart(product) {
@@ -472,6 +475,7 @@ onclick="changeQty(${i}, 1)">+</button>
       document.getElementById("custName").value = localStorage.getItem("custName") || "";
       document.getElementById("custAddress").value = localStorage.getItem("custAddress") || "";
       document.getElementById("custPhone").value = localStorage.getItem("custPhone") || "";
+      localStorage.setItem("custLocation", location);
 
       document.getElementById("cartModal").style.display = "flex";
     }
@@ -493,12 +497,13 @@ onclick="changeQty(${i}, 1)">+</button>
 
     function submitCartOrder() {
       const name = document.getElementById("custName").value.trim();
-      const address = document.getElementById("custAddress").value.trim();
-      const phone = document.getElementById("custPhone").value.trim();
-      if (!name || !address || !phone) {
-        alert("يرجى ملء جميع الحقول.");
-        return;
-      }
+const address = document.getElementById("custAddress").value.trim();
+const phone = document.getElementById("custPhone").value.trim();
+const location = document.getElementById("custLocation").value.trim();
+if (!name || !address || !phone) {
+  alert("يرجى ملء جميع الحقول (ما عدا اللوكيشن اختياري).");
+  return;
+}
       // حفظ بيانات الزبون
       localStorage.setItem("custName", name);
       localStorage.setItem("custAddress", address);
@@ -511,6 +516,7 @@ onclick="changeQty(${i}, 1)">+</button>
       let total = cart.reduce((sum, item) => sum + (Number(item.price.replace(/[^\d.]/g, "")) * item.qty), 0);
       msg += `المجموع الكلي: ${total} دينار\n`;
       msg += `الاسم: ${name}\nالعنوان: ${address}\nالهاتف: ${phone}`;
+if(location) msg += `\nاللوكيشن: ${location}`;
       const encoded = encodeURIComponent(msg);
       window.open(`https://wa.me/9647818004585?text=${encoded}`, '_blank');
       cart = [];
